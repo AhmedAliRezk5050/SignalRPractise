@@ -8,6 +8,7 @@ appsettings.json
 **.db
 **.db-shm
 **.db-wal
+.vscode
 
 node_modules
 # User-specific files
