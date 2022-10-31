@@ -1,5 +1,5 @@
 <div class="row">
-  <div class="col-12">
+  <div class="col-6">
     <form [formGroup]="chatForm" (ngSubmit)="onSubmit()">
       <div class="mb-3">
         <label for="user" class="form-label">User</label>
@@ -26,5 +26,16 @@
         Submit
       </button>
     </form>
+  </div>
+  <div class="col-6">
+    <div class="p-3">
+      <h5 class="mb-3">Messages</h5>
+      <ul class="list-group">
+        <p *ngIf="messages.length === 0">No messages yet</p>
+        <li class="list-group-item" *ngFor="let message of messages">
+          {{ message }}
+        </li>
+      </ul>
+    </div>
   </div>
 </div>

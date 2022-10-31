@@ -31,7 +31,7 @@ app.UseCors("CORSPolicy");
 
 app.UseAuthorization();
 
-app.MapHub<MessageHub>("/offers");
+// app.MapHub<MessageHub>("/offers");
 app.MapHub<ChatHub>("/chatHub");
 
 app.MapControllers();
