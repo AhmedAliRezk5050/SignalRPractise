@@ -1,12 +1,12 @@
 ﻿using Microsoft.AspNetCore.SignalR;
 
-namespace SignalRPractise.Hub
+namespace SignalRPractise.Hubs
 {
-    public class MessageHub : Hub<IMessageHubClient>
+  public class MessageHub : Hub<IMessageHubClient>
+  {
+    public async Task SendOffersToUser(List<string> message)
     {
-        public async Task SendOffersToUser(List<string> message)
-        {
-            await Clients.All.SendOffersToUser(message);
-        }
+      await Clients.All.SendOffersToUser(message);
     }
+  }
 }
