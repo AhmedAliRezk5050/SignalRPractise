@@ -1,1 +1,30 @@
-<p>chat works!</p>
+<div class="row">
+  <div class="col-12">
+    <form [formGroup]="chatForm" (ngSubmit)="onSubmit()">
+      <div class="mb-3">
+        <label for="user" class="form-label">User</label>
+        <input
+          type="text"
+          class="form-control"
+          id="user"
+          formControlName="user"
+        />
+      </div>
+      <div class="mb-3">
+        <label for="message" class="form-label">Message</label>
+        <textarea
+          class="form-control"
+          rows="3"
+          formControlName="message"
+        ></textarea>
+      </div>
+      <button
+        type="submit"
+        class="btn btn-primary"
+        [disabled]="!chatForm.valid"
+      >
+        Submit
+      </button>
+    </form>
+  </div>
+</div>
