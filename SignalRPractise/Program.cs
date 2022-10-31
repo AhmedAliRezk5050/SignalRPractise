@@ -1,4 +1,4 @@
-using SignalRPractise.Hub;
+using SignalRPractise.Hubs;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -32,6 +32,7 @@ app.UseCors("CORSPolicy");
 app.UseAuthorization();
 
 app.MapHub<MessageHub>("/offers");
+app.MapHub<ChatHub>("/chatHub");
 
 app.MapControllers();
 
