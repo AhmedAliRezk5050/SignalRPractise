@@ -14,7 +14,9 @@ export class RealTimeCounterComponent implements OnInit {
   ngOnInit(): void {
     // create connection
     this._hubConnection = new signalR.HubConnectionBuilder()
+      .configureLogging(signalR.LogLevel.Debug)
       .withUrl('http://localhost:5000/hubs/view')
+      .configureLogging(signalR.LogLevel.Debug)
       .build();
 
     // start connection
