@@ -16,7 +16,6 @@ export class RealTimeCounterComponent implements OnInit {
     this._hubConnection = new signalR.HubConnectionBuilder()
       .configureLogging(signalR.LogLevel.Debug)
       .withUrl('http://localhost:5000/hubs/view')
-      .configureLogging(signalR.LogLevel.Debug)
       .build();
 
     // start connection
