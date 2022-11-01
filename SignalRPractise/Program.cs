@@ -18,8 +18,13 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
-var app = builder.Build();
+builder.Host.ConfigureLogging(logging =>
+        {
+          logging.AddFilter("Microsoft.AspNetCore.SignalR", LogLevel.Debug);
+          logging.AddFilter("Microsoft.AspNetCore.Http.Connections", LogLevel.Debug);
+        });
 
+var app = builder.Build();
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
 {
