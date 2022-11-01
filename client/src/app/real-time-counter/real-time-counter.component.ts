@@ -1,3 +1,4 @@
+import { CustomLogger } from './../logger/CustomLogger';
 import { Component, OnInit } from '@angular/core';
 import * as signalR from '@microsoft/signalr';
 
@@ -14,7 +15,7 @@ export class RealTimeCounterComponent implements OnInit {
   ngOnInit(): void {
     // create connection
     this._hubConnection = new signalR.HubConnectionBuilder()
-      .configureLogging(signalR.LogLevel.Debug)
+      .configureLogging(new CustomLogger())
       .withUrl('http://localhost:5000/hubs/view')
       .build();
 
