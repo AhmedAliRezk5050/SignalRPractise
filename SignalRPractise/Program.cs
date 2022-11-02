@@ -40,6 +40,7 @@ app.UseAuthorization();
 app.MapHub<ChatHub>("/chatHub");
 app.MapHub<ViewHub>("/hubs/view");
 app.MapHub<StringHub>("/hubs/strings");
+app.MapHub<GroupsHub>("/hubs/groups");
 
 app.MapControllers();
 

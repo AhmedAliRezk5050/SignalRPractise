@@ -7,9 +7,10 @@ import { AppComponent } from './app.component';
 import { ChatComponent } from './chat/chat.component';
 import { RealTimeCounterComponent } from './real-time-counter/real-time-counter.component';
 import { UserInfoComponent } from './user-info/user-info.component';
+import { GroupsComponent } from './groups/groups.component';
 
 @NgModule({
-  declarations: [AppComponent, ChatComponent, RealTimeCounterComponent, UserInfoComponent],
+  declarations: [AppComponent, ChatComponent, RealTimeCounterComponent, UserInfoComponent, GroupsComponent],
   imports: [BrowserModule, NgbModule, ReactiveFormsModule],
   providers: [],
   bootstrap: [AppComponent],
