@@ -13,6 +13,7 @@ export class VotesComponent implements OnInit {
   ngOnInit(): void {
     this._hubConnection = new signalR.HubConnectionBuilder()
       .withUrl('http://localhost:5000/hubs/votes')
+      .withAutomaticReconnect()
       .build();
 
     this._hubConnection
