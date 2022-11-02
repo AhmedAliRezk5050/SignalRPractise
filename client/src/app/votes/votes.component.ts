@@ -14,7 +14,7 @@ export class VotesComponent implements OnInit {
   ngOnInit(): void {
     this._hubConnection = new signalR.HubConnectionBuilder()
       .withUrl('http://localhost:5000/hubs/votes')
-      .withAutomaticReconnect(new CustomRetryPolicy())
+      .withAutomaticReconnect()
       .build();
 
     this._hubConnection
@@ -29,6 +29,18 @@ export class VotesComponent implements OnInit {
 
     this._hubConnection.on('VotesUpdated', (votes) => {
       console.log(votes);
+    });
+
+    this._hubConnection.onreconnected(() => {
+      console.log('--- onreconnected ---');
+    });
+
+    this._hubConnection.onreconnecting(() => {
+      console.log('--- onreconnecting ---');
+    });
+
+    this._hubConnection.onclose(() => {
+      console.log('--- onclose ---');
     });
   }
 }

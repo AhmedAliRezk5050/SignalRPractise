@@ -5,7 +5,7 @@ var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddSignalR();
-builder.Services.AddScoped<IVoteManager, VoteManager>();
+builder.Services.AddTransient<IVoteManager, VoteManager>();
 builder.Services.AddCors(options =>
 {
   options.AddPolicy("CORSPolicy",
