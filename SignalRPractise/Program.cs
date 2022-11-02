@@ -1,9 +1,11 @@
 using SignalRPractise.Hubs;
+using SignalRPractise.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddSignalR();
+builder.Services.AddScoped<IVoteManager, VoteManager>();
 builder.Services.AddCors(options =>
 {
   options.AddPolicy("CORSPolicy",
@@ -41,6 +43,7 @@ app.MapHub<ChatHub>("/chatHub");
 app.MapHub<ViewHub>("/hubs/view");
 app.MapHub<StringHub>("/hubs/strings");
 app.MapHub<GroupsHub>("/hubs/groups");
+app.MapHub<VotesHub>("/hubs/votes");
 
 app.MapControllers();
 
