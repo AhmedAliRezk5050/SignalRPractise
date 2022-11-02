@@ -39,6 +39,7 @@ app.UseAuthorization();
 // app.MapHub<MessageHub>("/offers");
 app.MapHub<ChatHub>("/chatHub");
 app.MapHub<ViewHub>("/hubs/view");
+app.MapHub<StringHub>("/hubs/strings");
 
 app.MapControllers();
 

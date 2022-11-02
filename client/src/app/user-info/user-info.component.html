@@ -1,0 +1,15 @@
+<div class="row">
+  <div class="col-12">
+    <h3>User info: {{ userInfo }}</h3>
+    <hr />
+    <form [formGroup]="userForm" (ngSubmit)="onSubmit()">
+      <div class="mb-3">
+        <input type="text" class="form-control" formControlName="fName" />
+      </div>
+      <div class="mb-3">
+        <input type="text" class="form-control" formControlName="lName" />
+      </div>
+      <input type="submit" class="btn btn-primary" />
+    </form>
+  </div>
+</div>
