@@ -27,7 +27,6 @@ export class RealTimeCounterComponent implements OnInit {
     this._hubConnection
       .start()
       .then(() => {
-        // this.getLastCountValue();
         console.log('--- Connection Started ---');
       })
       .catch((err) => console.log(err));
@@ -35,19 +34,6 @@ export class RealTimeCounterComponent implements OnInit {
     // listen to updates
     this._hubConnection.on('ViewCountUpdate', (count) => {
       this.count = count;
-      if (count > 20) {
-        // Removes all handlers for the specified hub method (client size)
-        this._hubConnection.off('ViewCountUpdate');
-      }
-    });
-    this._hubConnection.on('LastValueUpdate', (count) => {
-      this.count = count;
     });
   }
-  increaseCount = () => {
-    this._hubConnection.send('NotifyWatching');
-  };
-  getLastCountValue = () => {
-    this._hubConnection.send('GetLastValue');
-  };
 }
