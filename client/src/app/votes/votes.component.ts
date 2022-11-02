@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import * as signalR from '@microsoft/signalr';
+import CustomRetryPolicy from '../policies/CustomRetryPolicy';
 
 @Component({
   selector: 'app-votes',
@@ -13,7 +14,7 @@ export class VotesComponent implements OnInit {
   ngOnInit(): void {
     this._hubConnection = new signalR.HubConnectionBuilder()
       .withUrl('http://localhost:5000/hubs/votes')
-      .withAutomaticReconnect([0, 5000, 10000, 30000, 60000])
+      .withAutomaticReconnect(new CustomRetryPolicy())
       .build();
 
     this._hubConnection
