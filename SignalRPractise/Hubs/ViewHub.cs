@@ -1,7 +1,14 @@
 using Microsoft.AspNetCore.SignalR;
 
 namespace SignalRPractise.Hubs;
-public class ViewHub : Hub
+
+public interface IViewHub
+{
+  Task ViewCountUpdate(int viewCount);
+  Task LastValueUpdate(int viewCount);
+}
+
+public class ViewHub : Hub<IViewHub>
 {
   private static int _viewCount;
 
@@ -9,19 +16,19 @@ public class ViewHub : Hub
   {
     _viewCount++;
 
-    await Clients.All.SendAsync("ViewCountUpdate", _viewCount);
+    await Clients.All.ViewCountUpdate(_viewCount);
   }
 
   public async Task GetLastValue()
   {
-    await Clients.All.SendAsync("LastValueUpdate", _viewCount);
+    await Clients.All.LastValueUpdate(_viewCount);
   }
 
   public override async Task OnConnectedAsync()
   {
     _viewCount++;
 
-    await Clients.All.SendAsync("ViewCountUpdate", _viewCount);
+    await Clients.All.ViewCountUpdate(_viewCount);
 
     await base.OnConnectedAsync();
   }
@@ -29,8 +36,8 @@ public class ViewHub : Hub
   public override async Task OnDisconnectedAsync(Exception? exception)
   {
     _viewCount--;
-    
-    await Clients.All.SendAsync("ViewCountUpdate", _viewCount);
+
+    await Clients.All.ViewCountUpdate(_viewCount);
 
     await base.OnDisconnectedAsync(exception);
   }
